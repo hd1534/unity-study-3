@@ -98,6 +98,13 @@ LayerMask :
     LayerMask.GetMask("layerName") :
         해당하는 이름의 레이어의 숫자를 리턴함
 
+Invoke("함수이름", float time) :
+    "함수이름" 함수를 time초 뒤에 호출함
+
+CancelInvoke("함수이름") :
+    "함수이름"함수의 예약을 취소함
+    만약 파라메터가 없음 해당 MonoBehaviour의 모든 예약을 취소
+
 
 ```
 

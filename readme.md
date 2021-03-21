@@ -11,6 +11,7 @@
 - [Core Module](#core-module)
 - [Physics 2D Module](#physics-2d-module)
 - [Component](#component)
+- [Tile Palette](#tile-palette)
 
 ---
 
@@ -133,5 +134,19 @@ Physics2D.Raycast( origin, direction, distance, layerMask ) :
 ## [Component](https://docs.unity3d.com/ScriptReference/Component.html)
 
 ```
+TileMap :
+    타일을 일정하게 깔아두는 컴포넌트
+
+TileMap Collider 2D :
+    타일맵에 맞춰 생성되는 콜라이더
+
+```
+
+---
+
+## [Tile Palette](https://youtu.be/f8ixw9IpnD8?list=PLO-mt5Iu5TeYI4dbYwWP8JqZMC9iuUIW2)
+
+```
+타일을 사용하기 위해 모아둔 프리펩
 
 ```

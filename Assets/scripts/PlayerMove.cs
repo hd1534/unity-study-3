@@ -66,7 +66,7 @@ public class PlayerMove : MonoBehaviour
                 Debug.DrawRay(rigid.position, Vector3.down, new Color(0,1,0));  // 에디터 상에서 Ray를 그려주는 디버깅용 함수
                 RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector2.down, 1, LayerMask.GetMask("Platform"));
                 if(rayHit.collider != null) {
-                    if(rayHit.distance < 0.6f) {
+                    if(rayHit.distance < 0.9f) {
                         animator.SetBool("isJumping", false);
                         jumpCount = 0;
                     }

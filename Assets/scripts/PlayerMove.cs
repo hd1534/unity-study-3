@@ -9,11 +9,17 @@ public class PlayerMove : MonoBehaviour
     public int jumpAble;
     public int jumpCount;
 
+    int PlayerDamegedLayer;
+    int PlayerLayer;
+
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator animator;
 
     private void Awake() {
+    PlayerDamegedLayer = LayerMask.NameToLayer("PlayerDameged");
+    PlayerLayer = LayerMask.NameToLayer("Player");
+
         rigid = GetComponent<Rigidbody2D>();     
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -46,8 +52,7 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("isRunning", true);
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         // 좌우 움직이기
         rigid.AddForce(
             Vector2.right * Input.GetAxisRaw("Horizontal"),
@@ -73,5 +78,35 @@ public class PlayerMove : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Enemy") {
+            OnDamaged(other.transform.position);
+        }
+    }
+
+    void OnDamaged(Vector2 targetPos) {
+        // 레이어 바꾸기
+        gameObject.layer = PlayerDamegedLayer;
+
+        // 살짝 투명하게
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        // 튕겨 나가기
+        rigid.AddForce(
+            new Vector2(transform.position.x - targetPos.x > 0 ? 2 : -2, 1) * 7,
+            ForceMode2D.Impulse
+        );
+
+        // 애니메이션
+        animator.SetTrigger("doDamaged");
+
+        Invoke("OffDamaged", 3);
+    }
+
+    void OffDamaged() {
+        gameObject.layer = PlayerLayer;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 }

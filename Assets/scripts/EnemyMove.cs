@@ -7,6 +7,7 @@ public class EnemyMove : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator animator;
+    CapsuleCollider2D capsuleCollider2D;
     public int nextMove;
 
     float thinkTime;
@@ -14,6 +15,7 @@ public class EnemyMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         Think();
     }
 
@@ -52,5 +54,31 @@ public class EnemyMove : MonoBehaviour
 
         thinkTime = Random.Range(2, 5);
         Invoke("Think", thinkTime);
+    }
+
+    public void OnDamaged() {
+
+        // Think 멈추기
+        CancelInvoke("Think");
+
+        // 색을 살짝 투명하게
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        // 뒤집기
+        spriteRenderer.flipY = true;
+
+        // Collider 비활성화
+        capsuleCollider2D.enabled = false;
+
+        // 튀어 오르는 움직임
+        rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+
+        // 삭제
+        Invoke("DeActive", 3);
+
+    }
+
+    void DeActive() {
+        gameObject.SetActive(false);
     }
 }

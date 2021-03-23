@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Platform
   - Enemy
+  - Spikes
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Enemy
   - Player
   - PlayerDameged
-  - 
+  - Spikes
   - 
   - 
   - 

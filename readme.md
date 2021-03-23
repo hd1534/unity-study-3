@@ -147,6 +147,9 @@ TileMap :
 TileMap Collider 2D :
     타일맵에 맞춰 생성되는 콜라이더
 
+GameObject.GetComponentInChildren<t>() :
+    t 타입의 컴포넌트를 작시 오브젝트에서 찾음
+
 ```
 
 ---

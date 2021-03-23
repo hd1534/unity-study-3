@@ -4,6 +4,7 @@
 
 ## 목차
 
+- [플레이 방법](#플레이-방법)
 - [Sprite](#sprite)
 - [Camera](#camera)
 - [Animation](#animation)
@@ -12,6 +13,23 @@
 - [Physics 2D Module](#physics-2d-module)
 - [Component](#component)
 - [Tile Palette](#tile-palette)
+
+---
+
+## 플레이 방법
+
+![스크린샷](./readmeImg/설명.jpg)
+
+```
+방향키로 움직이고, 스페이스바로 점프.
+스파이크를 밟거나 몬스터에 닿으면 피가 닳는다.
+몬스터를 밟으면 공격이고 점수가 오른다.
+코인을 먹으면 점수가 오른다.
+깃발에 닿으면 다음 스테이지로 넘어간다.
+목숨은 3개 있다.
+총 3개의 스테이지가 있다.
+
+```
 
 ---
 
@@ -160,3 +178,5 @@ GameObject.GetComponentInChildren<t>() :
 타일을 사용하기 위해 모아둔 프리펩
 
 ```
+
+골드메탈 아저씨 최고!
